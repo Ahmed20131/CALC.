@@ -1,49 +1,49 @@
-# advanced_math_calculator.py
-
-import math
-
-def safe_eval(expression):
-    """Safely evaluate a mathematical expression with constants and math functions."""
-    allowed_names = {
-        **math.__dict__,  # Import all math module functions/constants (e.g., sqrt, sin, pi, e)
-        "__builtins__": {},  # Disable built-in Python functions for safety
-    }
-
-    allowed_chars = "0123456789+-*/%^().// ,"
-    if any(char not in allowed_chars for char in expression):
-        raise ValueError("Invalid characters in input. Only numbers, math symbols, and supported functions/constants are allowed.")
-
-    # Evaluate the expression in the context of allowed names
-    return eval(expression, {"__builtins__": None}, allowed_names)
+import random
 
 def calculator():
-    print("WLCOME TO MR ALAA'S WORST NIGHTMARE")
-    print("HITLER JOKES ARE A MUST")
-    print("OTHER THAN THAT WELCOME TO HELL")
-    print("THERE IS NO ESCAPE SO DONT EVEN TRY")
+    insults = [
+        "Really? You can't solve that?",
+        "Even a toddler could do this.",
+        "Math is hard, huh? Poor thing.",
+        "You must be so proud of yourself for asking me.",
+        "Were you even trying?",
+        "And here I thought you'd use that brain of yours.",
+        "Shocking that you need me for this.",
+        "Bet you felt smart typing that in.",
+        "Why not just ask your dog next time?",
+        "I'm losing IQ points helping you."
+    ]
+
+    print("Welcome to The only calculator you'll ever need")
+    print("Type 'exit' if ur too stupid to use this\n")
 
     while True:
+        user_input = input("tf you want me to solve now : ")
+
+        if user_input.lower() == 'exit':
+            print("Finally giving up, huh?")
+            break
+
+      
+        if "67" in user_input:
+            print("liking the trend too much now are we?\n")
+            continue
+
         try:
-            # Get the entire mathematical expression
-            expression = input("\nEnter your mathematical expression or 'exit': ").strip()
-            if expression.lower() == 'exit':
-                print("DONT COME BACK")
-                break
+            # Perform the calculation
+            result = eval(user_input)
 
-            # Handle special case for "0 / 0"
-            if expression.replace(" ", "") == "0/0":
-                print("IF YOU TYPE SOME DUMB SHIT LIKE THAT AGAIN I WILL MURDER YOU")
-                continue
+            # Print the result
+            print(result)
 
-            # Safely evaluate the expression
-            result = safe_eval(expression)
-            print(f"The result is: {result}")
-        except ZeroDivisionError:
-            print("Error: Division by zero is not allowed.")
-        except ValueError as e:
-            print(f"Error: {e}. Please try again.")
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}. Please try again.")
+            # Choose a random insult
+            insult = random.choice(insults)
+            print(insult)
+
+        except Exception:
+            print("Wow, not only can you not solve it, but you can't even type it right.\n")
 
 if __name__ == "__main__":
     calculator()
+
+    #make it so that if "67" has occured more than once in the user input to shut the program down
